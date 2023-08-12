@@ -8,7 +8,7 @@ import { runIntervalJobs } from './services/jobs.js'
 const client = await getClient()
 const existingGuilds = await getGuilds()
 
-client.guilds.cache.forEach((guild) => {
+client.guilds.cache.forEach((guild: { id: string }) => {
   const guildExists = existingGuilds.some((g) => g.id === guild.id)
   if (!guildExists) {
     saveGuild(guild.id)
